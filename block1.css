@@ -1,0 +1,791 @@
+@font-face {
+    font-family: "Mont-light";
+    src: url("../Mont-ExtraLightDEMO.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: "comic sans MS";
+}
+
+:root {
+    --color-primary: #ffffff;
+    --color-secondary: #c4c4c4;
+    --color-details: #000000;
+    --color-alternable: #084E80;
+    --scrollbar-color: gray;
+    --color-urgency: none;
+    --background-image: url(../wallpaper1.jpg);
+}
+
+/*  para monitores 16:9  */
+@media (min-width:1366px) and (max-width:1920px) and (min-height:768px) and (max-height:1080px){
+    body {
+        width: 100vw;
+        height: 100vh;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
+    #principalBody {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    #block1 {
+        background-color: var(--color-primary);
+        width: 5vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+    
+    #block2 {
+        background-color: var(--color-secondary);
+        width: 30vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #block3 {
+        background-color: var(--color-primary);
+        width: 65vw;
+        height: 100vh;
+        position: relative;
+    }
+    
+    #buttonsConfig {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    #topBar {
+        width: 100%;
+        height: 10%;
+        background-color: var(--color-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: sticky;
+    }
+    
+    #search-options {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    button {
+        width: 30px;
+        height: 30px;
+        background-color: var(--color-details);
+        border-radius: 15px;
+        cursor: pointer;
+        border: none;
+        padding-top: 2px;
+        padding-right: 1px;
+        color: var(--color-primary);
+    
+        &:hover {
+            transition: 0.2s;
+            border: 2px solid var(--color-details);
+            border-top: 2px transparent;
+            background-color: var(--color-primary);
+            padding-top: 2px;
+            color: var(--color-details);
+        }
+    }
+    
+    .config {
+        transition: 0.2s;
+        border-radius: 15px;
+    }
+    
+    #searchBar {
+        width: 25vw;
+        height: 30px;
+        border: 2px solid;
+        border-radius: 20px;
+        padding-left: 20px;
+        font-weight: bold;
+    }
+    
+    i {
+        transition: 0.2s;
+        font-size: 20px;
+    }
+    
+    .back {
+        visibility: hidden;
+    }
+    
+    #contacts {
+        width: 100%;
+        height: 90%;
+        overflow-y: scroll;
+    }
+    
+    .contact {
+        width: 100%;
+        height: 60px;
+        background-color: var(--color-primary);
+        border-width: 1px;
+        border-style: solid;
+        border-left: 0px;
+        border-right: 0px;
+        border-top: 0px;
+        border-image: linear-gradient(to right, var(--color-primary) 0%, var(--color-details) 30% 70%, var(--color-primary) 100%);
+        border-image-slice: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+    
+    #people {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-alternable);
+    }
+    
+    #groups {
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+    
+    #simpleConfiguration {
+        width: 30vw;
+        height: 90vh;
+        position: fixed;
+        top: 10vh;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: var(--color-primary);
+    }
+    
+    #photoName {
+        height: 80px;
+        border: 0;
+        cursor: auto;
+    
+        &:hover {
+            background-color: var(--color-primary);
+            color: var(--color-details);
+        }
+    }
+    
+    .configs {
+        transition: 0.2s;
+        width: 100%;
+        height: 40px;
+        background-color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid;
+        border-radius: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        cursor: pointer;
+    
+        &:hover {
+            transition: 0.2s;
+            color: var(--color-primary);
+            background-color: var (--color-details);
+            border-radius: 20px;
+        }
+    
+        i {
+            font-size: 20px;
+        }
+    }
+    
+    #photo {
+        width: 70px;
+        height: 70px;
+        border: 1px solid;
+        border-radius: 45px;
+        cursor: pointer;
+    }
+    
+    .photoContact {
+        width: 40px;
+        height: 40px;
+        background-color: var(--color-secondary);
+        margin-left: 20px;
+        border-radius: 20px;
+        border: 1px solid;
+        cursor: pointer;
+    }
+    
+    .name {
+        color: var(--color-details);
+        font-size: larger;
+        font-weight: bold;
+        position: absolute;
+        left: 80px;
+    }
+    
+    .messageNumber {
+        width: auto;
+        height: auto;
+        min-width: 10px;
+        min-height: 15px;
+        margin-right: 20px;
+        font-weight: bold;
+    }
+    
+    ::-webkit-scrollbar {
+        transition: 0.2s;
+        width: 5px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--color-primary);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-color);
+        border-radius: 10px;
+    }
+    
+    #contactInformations {
+        width: 100%;
+        height: 10%;
+    }
+    
+    #conversation {
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 80%;
+        background-image: var(--background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #messageWrite {
+        width: 65vw;
+        height: 10vh;
+        max-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+    }
+    
+    form {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+    }
+    
+    #chooseFiles {
+        all: unset;
+    }
+    
+    #textSpace{
+        all: unset;
+        box-sizing: border-box;
+        background-color: var(--color-primary);
+        border: 5px solid var(--color-secondary);
+        outline: 1px solid;
+        left: 20%;
+        border-radius: 5px;
+        position: fixed;
+        left: 42vw;
+        height: auto;
+        width: 50vw;
+        font-size: 15px;
+        cursor: text;
+        resize: none;
+        color: var(--color-details);
+        z-index: 3;
+        font-weight: bold;
+        overflow-wrap: break-word;
+        padding: 5px;
+    }
+    
+    #openFile {
+        margin-left: 2vw;
+    }
+    
+    #hiddenButtonFiles {
+        width: 400px;
+        height: 100px;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        border-radius: 15px;
+        position: fixed;
+        bottom: 12vh;
+        left: 36vw;
+        visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    input[type="file"] {
+        border: 2px solid var(--color-details);
+    }
+    
+    input[type="submit"] {
+        transition: 0.2s;
+        padding: 5px;
+        border: 2px solid;
+        border-radius: 5px;
+        margin-right: 2vw;
+        background-color: var(--color-primary);
+        font-weight: bold;
+        color: var(--color-details);
+        cursor: pointer;
+    
+        &:hover {
+            transition: 0.2s;
+            background-color: var(--color-details);
+            color: var(--color-primary);
+        }
+    }
+    
+    #messageOut{
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        max-width: 60%;
+        width: auto;
+        margin: 10px;
+        border: 5px solid var(--color-secondary);
+        border-radius: 5px;
+        outline: 1px solid;
+        font-weight: bold;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    
+        section{
+            margin: 5px;
+            width: auto;
+            min-width: 20px;
+            height: 20px;
+            font-size: 12px;
+        }
+    
+        #photoAutor{
+            width: 30px;
+            height: 30px;
+            border: 1px solid;
+            border-radius: 45px;
+            cursor: pointer;
+        }
+    
+        #textMessage{
+            width: auto;
+            height: auto;
+            min-height: 40px;
+            font-size: 15px;
+            padding-right: 10px;
+        }
+    
+        #messageInformations{
+            align-items: center;
+            display: flex;
+            width: 100%;
+            background-color: var(--color-secondary);
+        }
+    }
+    
+    #messageMe{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        background-color: #ffffff;
+        max-width: 60%;
+        width: auto;
+        margin: 10px;
+        border: 5px solid var(--color-details);
+        border-radius: 5px;
+        outline: 1px solid;
+        font-weight: bold;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    
+        section{
+            margin: 5px;
+            width: auto;
+            min-width: 20px;
+            height: 20px;
+            font-size: 12px;
+        }
+    
+        #photoAutor{
+            width: 30px;
+            height: 30px;
+            border: 1px solid;
+            border-radius: 45px;
+            cursor: pointer;
+        }
+    
+        #textMessage{
+            width: auto;
+            height: auto;
+            min-height: 40px;
+            font-size: 15px;
+            padding-left: 10px;
+        }
+    
+        #messageInformations{
+            align-items: center;
+            justify-content: end;
+            display: flex;
+            width: 100%;
+            background-color: var(--color-details);
+            color: var(--color-secondary);
+        }
+    }
+    
+    #popUpOptions {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 11vh;
+        left: 25vw;
+        width: 150px;
+        height: 200px;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        z-index: 2;
+        border-radius: 10px;
+    }
+    
+    .optionButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .close {
+        color: var(--color-details);
+        background-color: var(--color-primary);
+        position: absolute;
+        width: 20px;
+        height: 25px;
+        top: 1vh;
+        left: 1vh;
+    
+        &:hover {
+            border: none;
+        }
+    }
+    
+    #NotificationsConfig {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 10vh;
+        left: 35vw;
+        width: 30vw;
+        height: 80vh;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        z-index: 2;
+        border-radius: 5px;
+    }
+    #accountConfig {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 10vh;
+        left: 5vw;
+        width: 30vw;
+        height: 90vh;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        z-index: 2;
+    }
+    
+    #help {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 10vh;
+        left: 5vw;
+        width: 30vw;
+        height: 90vh;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        border-top-left-radius: 10px;
+        z-index: 2;
+    }
+    
+    #shortCutConfig {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 10vh;
+        left: 5vw;
+        width: 30vw;
+        height: 90vh;
+        background-color: var(--color-primary);
+        border: 1px solid;
+        z-index: 2;
+    }
+    
+    #popUpNotifications {
+        background-color: var(--color-primary);
+        color: white;
+        width: 30vw;
+        height: auto;
+        display: none;
+        flex-direction: column;
+        top: 10vh;
+        left: 10vh;
+        position: absolute;
+        cursor: grab;
+        border-radius: 8px;
+        border: 1px solid var(--color-details);
+        overflow: visible;
+        z-index: 2;
+    }
+    h4{
+        color: var(--color-details);
+    }
+    #notification {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+    
+    #notificationMessage {
+        width: 100%;
+        height: fit-content;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.5s;
+        padding: 20px;
+    }
+    
+    #informations {
+        width: 30vw;
+        max-width: 30vw;
+        min-height: 100px;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    
+        .item {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    
+    #messageAutor{
+        all: unset;
+        transition: 0.5s;
+        border: 1px solid var(--color-details);
+        border-radius: 5px;
+        width: auto;
+        width: 100%;
+        font-size: 20px;
+        cursor: text;
+        resize: none;
+        color: var(--color-details);
+        font-weight: bold;
+        z-index: 3;
+        overflow-wrap: break-word;
+    }
+    
+    #urgencyLevel{
+        width: 100%; 
+        height: 40%; 
+        border-radius: 5px; 
+        background-color: var(--color-urgency); 
+        border: 1px solid var(--color-details);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    
+    #solvedButton {
+        all: unset;
+        box-sizing: border-box;
+        height: 40%;
+        background-color: #00a3cc;
+        border: 1px solid;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-details);
+        font-weight: bold;
+    
+        &:hover {
+            background-color: #0073b6;
+        }
+    }
+    
+    #toPostpone {
+        width: 30vw;
+        max-width: 30vw;
+        min-height: 150px;
+        height: 20%;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+    #response {
+        width: 30vw;
+        max-width: 30vw;
+        height: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/*  para monitores 21:9  */
+@media (aspect-ratio:21/9){
+
+}
+
+/*  para monitores verticais, proporção 9:16  */
+@media (aspect-ratio:9/16){
+    #popUpOptions{
+        display: none;
+    }
+    #NotificationsConfig{
+        display: none;
+    }
+    #accountConfig{
+        display: none;
+    }
+    #help{
+        display: none;
+    }
+    #shortCutConfig{
+        display: none;
+    }
+    #popUpNotifications{
+        display: none;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #principalBody{
+        width: 100%;
+        height: 100%;
+    }
+    #block1{
+        display: flex;
+        background-color: #000000;
+        align-items: center;
+        justify-content: space-between;
+        height: 3vh;
+    }
+    #block2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 20vh;
+
+        #contacts{
+            display: flex;
+            height: 15vh;
+            width: 100vw;
+            align-items: center;
+            overflow-y: scroll;
+
+            #people{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: auto;
+
+                .contact{
+                    width: 100%;
+                    height: 60px;
+                    background-color: var(--color-primary);
+                    border-width: 1px;
+                    border-style: solid;
+                    border-left: 0px;
+                    border-right: 0px;
+                    border-top: 0px;
+                    border-image: linear-gradient(to right, var(--color-primary) 0%, var(--color-details) 30% 70%, var(--color-primary) 100%);
+                    border-image-slice: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    position: relative;
+                }
+            }
+        }
+        #topBar{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100vw;
+            height: 5vh;
+
+            #search-options{
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 50vw;
+            }
+        }
+    }
+}
+
