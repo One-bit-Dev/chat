@@ -5,11 +5,11 @@ $user = 'garrafa';
 $pass = 'nLAJnGx6kpzN6d098mwyzWQHrAf0gFHY';
 $port = '5432';
 
-$dsn = "pgsql:host=$host;port=$port;dbname=$db;";
-try {
-    $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-    echo "Conexão bem-sucedida!";
-} catch (PDOException $e) {
-    echo "Erro: " . $e->getMessage();
+$conn_string = "host=$host dbname=$dbname user=$user password=$password port=$port";
+
+$conn = pg_connect($conn_string);
+
+if (!$conn) {
+    die("Erro ao conectar ao banco de dados.");
 }
 ?>
