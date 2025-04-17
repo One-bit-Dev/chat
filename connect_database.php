@@ -7,7 +7,7 @@ $port = '5432';
 
 $conn_string = "host=$host dbname=$dbname user=$user password=$password port=$port";
 
-$conn = connect_database($conn_string);
+$conn = pg_connect($conn_string);
 
 if (!$conn) {
     die("Erro ao conectar ao banco de dados.");
