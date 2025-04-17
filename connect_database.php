@@ -1,37 +1,15 @@
 <?php
+$host = 'dpg-d00gpj2dbo4c73923hag-a';      // exemplo: dpg-xxxxxx.render.internal
+$db   = 'dbchat_bl2u';
+$user = 'garrafa';
+$pass = 'nLAJnGx6kpzN6d098mwyzWQHrAf0gFHY';
+$port = '5432';
 
-// Configurações do banco
-$host = "localhost";
-$dbname = "seu_banco";
-$user = "root";
-$pass = "";
-
-// Conectar ao PostgreSQL
+$dsn = "pgsql:host=$host;port=$port;dbname=$db;";
 try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-
-    // Capturar os dados do formulário
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $chooseColor = $_POST["chooseColor"] ?? "";
-        $dateTime = $_POST["dateTime"] ?? "";
-        $date = $_POST["nome"] ?? "";
-        $time = $_POST["nome"] ?? "";
-        $email = $_POST["email"] ?? "";
-
-        // Inserir no banco de dados
-        $sql = "INSERT INTO usuarios (nome, email) VALUES (:nome, :email)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            ":nome" => $nome,
-            ":email" => $email
-        ]);
-
-        echo "Cadastro realizado com sucesso!";
-    }
+    $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    echo "Conexão bem-sucedida!";
 } catch (PDOException $e) {
     echo "Erro: " . $e->getMessage();
 }
-
 ?>
